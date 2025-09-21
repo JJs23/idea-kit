@@ -61,28 +61,43 @@ def write_file(filepath: str, content: str) -> bool:
 def get_project_name() -> str:
     """Get project name from user input"""
     try:
-        project_name = input("Enter project name (or press Enter for 'my-ideas'): ").strip()
+        print("📁 Project Setup")
+        print("   This will create a new folder for your IdeaKit project.")
+        project_name = input("   Enter project name (or press Enter for 'my-ideas'): ").strip()
         return project_name if project_name else "my-ideas"
     except (EOFError, KeyboardInterrupt):
         return "my-ideas"
 
-def create_new_project(project_name: str) -> bool:
+def create_new_project(project_name: str, skip_git: bool = False) -> bool:
     """Create new project directory and initialize git"""
     try:
+        print(f"   Creating project folder: {project_name}")
+        
         # Create project directory
         if not create_directory(project_name):
+            print(f"   ❌ Failed to create directory: {project_name}")
             return False
         
         # Change to project directory
         os.chdir(project_name)
+        print(f"   ✅ Created and moved to: {os.getcwd()}")
         
-        # Initialize git
-        if shutil.which('git'):
+        # Initialize git (unless skipped)
+        if not skip_git and shutil.which('git'):
+            print("   🔧 Initializing Git repository...")
             run_command('git init')
+            write_file('README.md', f"# {project_name} - IdeaKit Project\n")
+            print("   ✅ Git repository initialized")
+        elif skip_git:
+            print("   ⏭️  Skipping Git initialization (--no-git flag)")
+            write_file('README.md', f"# {project_name} - IdeaKit Project\n")
+        else:
+            print("   ⚠️  Git not found, skipping Git initialization")
             write_file('README.md', f"# {project_name} - IdeaKit Project\n")
         
         return True
-    except Exception:
+    except Exception as e:
+        print(f"   ❌ Error creating project: {e}")
         return False
 
 def create_directory_structure():
@@ -540,10 +555,11 @@ def create_package_json():
 
 def print_completion_message():
     """Print installation completion message"""
+    current_dir = os.path.basename(os.getcwd())
     print()
     print("🎉 IdeaKit installation complete!")
     print()
-    print("📁 Project structure created:")
+    print(f"📁 Project '{current_dir}' structure created:")
     print("   .ideakit/          - Configuration and templates")
     print("   .cursor/           - Cursor AI instructions")  
     print("   ideas/             - Your ideas organized by status")
@@ -564,23 +580,104 @@ def print_completion_message():
     print("📖 Check ideas/example-idea.md to see the format")
     print("⚙️  Edit .ideakit/constitution.md to customize your principles")
     print()
+    print(f"🎯 Your project is ready in: {os.getcwd()}")
     print("Happy idea developing! 🦄")
+
+def print_help():
+    """Print help message"""
+    print("🚀 IdeaKit Universal Installer")
+    print()
+    print("USAGE:")
+    print("  python install.py [OPTIONS]")
+    print()
+    print("OPTIONS:")
+    print("  -h, --help     Show this help message")
+    print("  -n, --name     Specify project name directly")
+    print("  --no-git       Skip Git initialization")
+    print("  --existing     Install in existing project (skip project creation)")
+    print()
+    print("EXAMPLES:")
+    print("  python install.py                    # Interactive installation")
+    print("  python install.py -n my-ideas        # Create project named 'my-ideas'")
+    print("  python install.py --existing         # Install in current directory")
+    print("  python install.py -n game-dev --no-git  # Create project without Git")
+    print()
+    print("DESCRIPTION:")
+    print("  IdeaKit is a tool for creative idea development with AI assistance.")
+    print("  This installer sets up the complete development environment.")
+    print()
+    print("  Features:")
+    print("  • Cross-platform support (Windows, macOS, Linux)")
+    print("  • Cursor AI integration with custom commands")
+    print("  • Structured idea development workflow")
+    print("  • Template system for consistent documentation")
+    print()
+    print("  Commands available after installation:")
+    print("  • @spark [idea]     - Capture and assess new ideas")
+    print("  • @expand           - Creative expansion mode")
+    print("  • @reality-check    - Feasibility analysis")
+    print("  • @blueprint        - Project planning")
+    print("  • @constitution     - Update evaluation criteria")
+    print()
+    print("  For more information, visit: https://github.com/JJs23/idea-kit")
 
 def main():
     """Main installation function"""
+    # Parse command line arguments
+    import sys
+    
+    # Check for help flag
+    if len(sys.argv) > 1 and sys.argv[1] in ['-h', '--help']:
+        print_help()
+        sys.exit(0)
+    
+    # Parse other arguments
+    project_name = None
+    skip_git = False
+    existing_project = False
+    
+    i = 1
+    while i < len(sys.argv):
+        arg = sys.argv[i]
+        if arg in ['-n', '--name']:
+            if i + 1 < len(sys.argv):
+                project_name = sys.argv[i + 1]
+                i += 2
+            else:
+                print("❌ Error: --name requires a project name")
+                sys.exit(1)
+        elif arg == '--no-git':
+            skip_git = True
+            i += 1
+        elif arg == '--existing':
+            existing_project = True
+            i += 1
+        else:
+            print(f"❌ Error: Unknown argument '{arg}'")
+            print("Use --help for usage information")
+            sys.exit(1)
+    
     print_status("Installing IdeaKit...")
     print()
     
     # Check if we're in a git repository or create new project
-    if not is_git_repo():
-        print_status("Creating new IdeaKit project...")
-        project_name = get_project_name()
+    if not is_git_repo() and not existing_project:
+        print_status("Setting up new IdeaKit project...")
         
-        if not create_new_project(project_name):
+        if project_name is None:
+            project_name = get_project_name()
+        
+        if not create_new_project(project_name, skip_git):
             print("❌ Failed to create new project")
             sys.exit(1)
+        
+        print()
+        print_status("Installing IdeaKit components in new project...")
     else:
-        print_status("Installing in existing project...")
+        if existing_project:
+            print_status("Installing in existing project...")
+        else:
+            print_status("Installing in existing Git repository...")
     
     # Create directory structure
     print_status("Creating directory structure...")
