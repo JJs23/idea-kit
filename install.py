@@ -218,6 +218,138 @@ Review or help update the constitution.md file based on user feedback.
 """
     return write_file('.cursor/instructions.md', content)
 
+def create_cursor_commands():
+    """Create Cursor custom commands as individual markdown files"""
+    # Create commands directory
+    if not create_directory('.cursor/commands'):
+        return False
+    
+    commands = {
+        'ik-spark.md': """# Capture and initially assess a new idea
+
+I want to capture and assess a new idea. Please read the constitution at .ideakit/constitution.md first, then:
+
+1. Show excitement for the new idea
+2. Quickly assess against constitution criteria (1-10 scale)
+3. Ask 2-3 clarifying questions to understand core vision
+4. Create idea-seed.md file in ideas/ folder with timestamp
+5. Suggest using @expand as next step
+
+Use the template from .ideakit/templates/idea-seed.md for formatting.""",
+        
+        'ik-expand.md': """# Switch to Creative Partner mode for idea expansion
+
+I want to expand my idea creatively. Please read the constitution at .ideakit/constitution.md first, then switch to Creative Partner mode:
+
+1. Build on existing idea with 3-5 creative variations
+2. Cross-pollinate with different domains (gaming+cooking, music+fitness, etc.)
+3. Amplify fun factors - what makes it more entertaining?
+4. Explore unusual use cases or edge cases
+5. Generate creative-expansion.md with multiple directions
+
+Use the template from .ideakit/templates/creative-expansion.md for formatting.""",
+        
+        'ik-reality-check.md': """# Switch to Critical Mentor mode for feasibility analysis
+
+I want to do a reality check on my idea. Please read the constitution at .ideakit/constitution.md first, then switch to Critical Mentor mode:
+
+Analyze the idea against constitution criteria:
+
+### Technical Feasibility
+- Can 1 person build this in 6 months for MVP?
+- What are the hardest technical challenges?
+- Required skill gaps vs constitution's preferred stack?
+- Third-party dependencies and costs?
+
+### Market Reality
+- Who exactly will use this? (be specific)
+- How will they discover it?
+- What similar solutions exist?
+- Why would they switch from current solutions?
+
+### Business Viability
+- Clear revenue model within 12 months?
+- Sustainable as 1-person business?
+- Customer acquisition strategy?
+- Resource requirements vs solo capacity?
+
+### Risk Assessment
+- What could go wrong?
+- Plan B options?
+- Minimum viable scope?
+- Exit strategy if it doesn't work?
+
+Create validation-report.md file with your analysis.""",
+        
+        'ik-blueprint.md': """# Switch to Blueprint Architect mode for project planning
+
+I want to create a blueprint for my idea. Please read the constitution at .ideakit/constitution.md first, then switch to Blueprint Architect mode:
+
+Create a comprehensive project proposal with:
+
+### Executive Summary
+- One-sentence pitch
+- Core value proposition
+- Primary target audience
+- Key differentiation
+
+### Technical Specification
+- Tech stack (prefer constitution's choices)
+- Architecture overview
+- Key integrations needed
+- Performance requirements
+
+### Implementation Roadmap
+- MVP scope (3-month goal)
+- Phase 1 features (months 1-3)
+- Phase 2 features (months 4-6)
+- Launch strategy
+
+### Business Model
+- Primary revenue streams
+- Cost structure
+- Key metrics to track
+- Growth strategy
+
+### Risk Mitigation
+- Technical risks & solutions
+- Market risks & alternatives
+- Resource risks & backup plans
+- Success criteria & milestones
+
+Create project-proposal.md file with your comprehensive plan.""",
+        
+        'ik-constitution.md': """# Review or update the constitution
+
+I want to review or update my constitution. Please read the current constitution at .ideakit/constitution.md and help me:
+
+1. Review current philosophy and evaluation criteria
+2. Suggest improvements based on my feedback
+3. Update tech stack preferences if needed
+4. Adjust evaluation criteria weights
+5. Add or modify pitfalls to avoid
+
+Provide specific recommendations and help update the constitution file.""",
+        
+        'ik-status.md': """# Show current IdeaKit project status
+
+Show me the current status of my IdeaKit project:
+
+1. Count ideas in each folder (active/, archive/, implemented/)
+2. Show recent ideas with their constitution scores
+3. Display project statistics
+4. Suggest next actions based on current state
+
+Use the constitution at .ideakit/constitution.md for context."""
+    }
+    
+    success = True
+    for filename, content in commands.items():
+        if not write_file(f'.cursor/commands/{filename}', content):
+            success = False
+    
+    return success
+
 def create_prompt_templates():
     """Create all prompt template files"""
     templates = {
@@ -561,7 +693,8 @@ def print_completion_message():
     print()
     print(f"📁 Project '{current_dir}' structure created:")
     print("   .ideakit/          - Configuration and templates")
-    print("   .cursor/           - Cursor AI instructions")  
+    print("   .cursor/           - Cursor AI instructions and custom commands")  
+    print("   .cursor/commands/  - Individual command files (ik-*.md)")
     print("   ideas/             - Your ideas organized by status")
     print("   prototypes/        - Code experiments")
     print("   research/          - Market research and notes")
@@ -625,6 +758,9 @@ def print_help():
     print("  • @reality-check    - Feasibility analysis")
     print("  • @blueprint        - Project planning")
     print("  • @constitution     - Update evaluation criteria")
+    print("  • @ideakit-status   - Show project status")
+    print()
+    print("  Custom commands are automatically configured in Cursor!")
     print()
     print("  For more information, visit: https://github.com/JJs23/idea-kit")
 
@@ -708,6 +844,10 @@ def main():
     print_status("Creating Cursor instructions...")
     if not create_cursor_instructions():
         print("⚠️  Warning: Could not create Cursor instructions")
+    
+    print_status("Creating Cursor custom commands...")
+    if not create_cursor_commands():
+        print("⚠️  Warning: Could not create Cursor custom commands")
     
     # Create prompt templates
     print_status("Creating prompt templates...")

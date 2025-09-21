@@ -32,7 +32,8 @@ project-root/
 │       ├── idea-seed.md        # Initial idea capture template
 │       └── creative-expansion.md # Creative development template
 ├── .cursor/
-│   └── instructions.md         # Cursor AI configuration
+│   ├── instructions.md         # Cursor AI configuration
+│   └── commands.json           # Custom Cursor commands
 ├── ideas/
 │   ├── active/                 # Ideas in progress
 │   ├── archive/                # Paused/completed ideas
@@ -68,8 +69,10 @@ project-root/
 - **@reality-check**: Critical mentor mode for feasibility analysis
 - **@blueprint**: Blueprint architect mode for project planning
 - **@constitution**: Constitution review and updates
+- **@ideakit-status**: Project status and statistics
 - **Cursor Integration**: Commands work directly in Cursor chat interface
 - **Custom Instructions**: Pre-configured AI behavior for consistent responses
+- **Custom Commands**: JSON-based command configuration for Cursor
 
 ### 4. Template System
 - **Idea Seed Template**: Structured format for initial idea capture
@@ -104,6 +107,7 @@ from pathlib import Path
 ### Step 4: Configuration Files
 - Generate constitution.md with core philosophy
 - Create Cursor AI instructions in `.cursor/instructions.md`
+- Create custom Cursor commands in `.cursor/commands.json`
 - Set up prompt templates for each command
 
 ### Step 5: Template System
@@ -138,17 +142,20 @@ from pathlib import Path
 
 ### Cursor AI Integration
 - **Custom Instructions**: Pre-configured AI behavior in `.cursor/instructions.md`
-- **Command Recognition**: @spark, @expand, @reality-check, @blueprint commands work immediately
+- **Custom Commands**: JSON-based command configuration in `.cursor/commands.json`
+- **Command Recognition**: @spark, @expand, @reality-check, @blueprint, @ideakit-status commands work immediately
 - **Context Awareness**: AI understands project structure and constitution
 - **Persona Switching**: Different AI personalities for different workflow stages
 - **File Management**: Automatic file creation and organization
+- **Command Palette Integration**: Commands appear in Cursor's command palette
 
 ### Development Workflow
 1. **@spark**: Capture new ideas
 2. **@expand**: Develop creative variations
 3. **@reality-check**: Validate feasibility
 4. **@blueprint**: Create implementation plan
-5. **File Management**: Organize by status
+5. **@ideakit-status**: Monitor project progress
+6. **File Management**: Organize by status
 
 ## 📊 Success Metrics
 
@@ -201,12 +208,14 @@ from pathlib import Path
 - **README.md**: Quick start guide with cross-platform instructions
 - **INSTALL.md**: Detailed installation guide for all platforms
 - **Example Files**: Built-in usage examples and templates
+- **Help System**: Built-in help with `python install.py --help`
 
 ### Developer Documentation
 - **PRD**: This document for technical specifications
 - **Code Comments**: Inline documentation in Python script
 - **Template Documentation**: Built into template files
 - **API Documentation**: Python function documentation
+- **Command Line Interface**: Full CLI with help system and options
 
 ## 🎯 Success Criteria
 
@@ -224,6 +233,8 @@ from pathlib import Path
 - ✅ Cross-platform compatibility (Windows, macOS, Linux)
 - ✅ UTF-8 character support for international users
 - ✅ Cursor AI integration ready out of the box
+- ✅ Command line interface with help system
+- ✅ Custom Cursor commands automatically configured
 
 ---
 

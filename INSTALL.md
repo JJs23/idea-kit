@@ -21,6 +21,21 @@ curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.py | pyt
 cursor .
 ```
 
+### Installation Options
+```bash
+# Show help and available options
+python3 install.py
+
+# Create new project with specific name
+python3 install.py -n my-awesome-ideas
+
+# Install in existing project (skip project creation)
+python3 install.py --existing
+
+# Create project without Git initialization
+python3 install.py -n my-project --no-git
+```
+
 ## Method 2: Manual Installation
 
 ### 1. Create Project Structure
@@ -116,7 +131,8 @@ Switch to Blueprint Architect mode. Create comprehensive project proposal with t
 
 1. **Open Project**: `cursor .`
 2. **Check Custom Instructions**: Cursor automatically reads `.cursor/instructions.md` file
-3. **Test**: Try typing `@spark my first idea`
+3. **Check Custom Commands**: Cursor automatically loads `.cursor/commands.json` file
+4. **Test**: Try typing `@spark my first idea` or use the custom commands from the command palette
 
 ## Usage
 
@@ -134,9 +150,12 @@ Switch to Blueprint Architect mode. Create comprehensive project proposal with t
 ### File Structure Example
 ```
 project/
-├── .cursor/instructions.md          # Cursor AI configuration
+├── .cursor/
+│   ├── instructions.md              # Cursor AI configuration
+│   └── commands.json                # Custom Cursor commands
 ├── .ideakit/
 │   ├── constitution.md              # Personal philosophy and criteria
+│   ├── prompts/                     # Command-specific prompts
 │   └── templates/                   # File templates
 ├── ideas/
 │   ├── active/                      # Ideas in progress
@@ -155,7 +174,15 @@ Edit `.ideakit/constitution.md` to:
 - Adjust evaluation criteria weights
 
 ### Adding New Commands
-Define new `@command` in `.cursor/instructions.md`
+Add new commands to `.cursor/commands.json` following the existing format:
+```json
+{
+  "name": "my-command",
+  "description": "Description of what this command does",
+  "prompt": "Detailed prompt for the AI",
+  "context": "file"
+}
+```
 
 ### Template Modification
 Modify templates in `.ideakit/templates/` folder to desired format
@@ -163,9 +190,10 @@ Modify templates in `.ideakit/templates/` folder to desired format
 ## Troubleshooting
 
 ### When Cursor doesn't recognize commands
-1. Check if `.cursor/instructions.md` file exists
+1. Check if `.cursor/instructions.md` and `.cursor/commands.json` files exist
 2. Restart Cursor
 3. Make sure you're running from project root
+4. Check if custom commands appear in Cursor's command palette
 
 ### When files aren't created
 1. Check folder permissions

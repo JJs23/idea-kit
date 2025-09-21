@@ -9,11 +9,13 @@ IdeaKit is inspired by GitHub's [Spec Kit](https://github.com/github/spec-kit) a
 
 ## ✨ Features
 
-- 🎯 **Cursor AI Integration**: Natural idea development with custom slash commands
+- 🎯 **Cursor AI Integration**: Natural idea development with custom commands and instructions
 - 🎭 **Persona Switching**: Switch between Creative Partner ↔ Realistic Mentor modes
 - 🏗️ **Structured Workflow**: Spark → Expand → Reality-check → Blueprint
 - 📁 **Systematic Management**: Automatic file organization by idea status
 - 🦄 **Solo Development Optimized**: Evaluation focused on MVP implementation within 6 months by one person
+- ⚙️ **Custom Commands**: Pre-configured Cursor commands for seamless workflow
+- 🌍 **Cross-Platform**: Works on Windows, macOS, and Linux with Python
 
 ## 🚀 Quick Start
 
@@ -27,6 +29,21 @@ curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.py | pyt
 git clone https://github.com/JJs23/idea-kit.git
 cd idea-kit
 python3 install.py
+```
+
+### Installation Options
+```bash
+# Show help
+python3 install.py
+
+# Create new project with specific name
+python3 install.py -n my-awesome-ideas
+
+# Install in existing project
+python3 install.py --existing
+
+# Create project without Git initialization
+python3 install.py -n my-project --no-git
 ```
 
 After installation, open the project in Cursor and start immediately:
@@ -71,12 +88,23 @@ After installation, open the project in Cursor and start immediately:
 - Include tech stack, roadmap, business model
 - Create 6-month MVP plan
 
+### 5. 📊 Project Status (`@ideakit-status`)
+**Persona: Project Manager**
+```
+@ideakit-status
+```
+- Show current project statistics
+- Count ideas in each folder
+- Display recent ideas with scores
+- Suggest next actions
+
 ## 📁 Project Structure
 
 ```
 my-ideas/
 ├── .cursor/
-│   └── instructions.md          # Cursor AI configuration
+│   ├── instructions.md          # Cursor AI configuration
+│   └── commands.json            # Custom Cursor commands
 ├── .ideakit/
 │   ├── constitution.md          # Personal philosophy and evaluation criteria
 │   ├── prompts/                 # Command-specific prompts
