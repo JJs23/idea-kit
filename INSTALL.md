@@ -3,71 +3,33 @@
 ## Method 1: Script Auto-Installation (Recommended)
 
 ### Install as New Project
-
-**Linux/macOS:**
 ```bash
 # 1. Create new folder and navigate
 mkdir my-ideas && cd my-ideas
 
-# 2. Download and run script
-curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.sh | bash
-
-# 3. Open in Cursor
-cursor .
-```
-
-**Windows:**
-```cmd
-# 1. Create new folder and navigate
-mkdir my-ideas
-cd my-ideas
-
-# 2. Download and run script
-curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.bat | cmd
+# 2. Download and run script (works on all platforms)
+curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.py | python3
 
 # 3. Open in Cursor
 cursor .
 ```
 
 ### Install in Existing Project
-
-**Linux/macOS:**
 ```bash
 # In existing project folder
-curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.sh | bash
-cursor .
-```
-
-**Windows:**
-```cmd
-# In existing project folder
-curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.bat | cmd
+curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.py | python3
 cursor .
 ```
 
 ## Method 2: Manual Installation
 
 ### 1. Create Project Structure
-
-**Linux/macOS:**
 ```bash
+# Works on all platforms
 mkdir -p .ideakit/{prompts,templates,personas}
 mkdir -p .cursor
 mkdir -p ideas/{active,archive,implemented}
 mkdir -p prototypes research
-```
-
-**Windows:**
-```cmd
-mkdir .ideakit\prompts
-mkdir .ideakit\templates
-mkdir .ideakit\personas
-mkdir .cursor
-mkdir ideas\active
-mkdir ideas\archive
-mkdir ideas\implemented
-mkdir prototypes
-mkdir research
 ```
 
 ### 2. Create Core Files
