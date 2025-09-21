@@ -597,10 +597,17 @@ def print_help():
     print("  --existing     Install in existing project (skip project creation)")
     print()
     print("EXAMPLES:")
-    print("  python install.py                    # Interactive installation")
+    print("  python install.py                    # Show this help message")
     print("  python install.py -n my-ideas        # Create project named 'my-ideas'")
     print("  python install.py --existing         # Install in current directory")
     print("  python install.py -n game-dev --no-git  # Create project without Git")
+    print()
+    print("QUICK START:")
+    print("  1. Create a new project:")
+    print("     python install.py -n my-awesome-ideas")
+    print()
+    print("  2. Or install in existing project:")
+    print("     python install.py --existing")
     print()
     print("DESCRIPTION:")
     print("  IdeaKit is a tool for creative idea development with AI assistance.")
@@ -626,8 +633,8 @@ def main():
     # Parse command line arguments
     import sys
     
-    # Check for help flag
-    if len(sys.argv) > 1 and sys.argv[1] in ['-h', '--help']:
+    # Check for help flag or no arguments
+    if len(sys.argv) == 1 or (len(sys.argv) > 1 and sys.argv[1] in ['-h', '--help']):
         print_help()
         sys.exit(0)
     
@@ -660,12 +667,21 @@ def main():
     print_status("Installing IdeaKit...")
     print()
     
-    # Check if we're in a git repository or create new project
-    if not is_git_repo() and not existing_project:
+    # Check if we need to create a new project
+    if not existing_project and project_name is not None:
+        # User specified a project name, create new project
         print_status("Setting up new IdeaKit project...")
         
-        if project_name is None:
-            project_name = get_project_name()
+        if not create_new_project(project_name, skip_git):
+            print("❌ Failed to create new project")
+            sys.exit(1)
+        
+        print()
+        print_status("Installing IdeaKit components in new project...")
+    elif not existing_project and not is_git_repo():
+        # No project name specified and not in git repo, ask for project name
+        print_status("Setting up new IdeaKit project...")
+        project_name = get_project_name()
         
         if not create_new_project(project_name, skip_git):
             print("❌ Failed to create new project")
@@ -674,6 +690,7 @@ def main():
         print()
         print_status("Installing IdeaKit components in new project...")
     else:
+        # Install in existing project/repository
         if existing_project:
             print_status("Installing in existing project...")
         else:
