@@ -1,22 +1,22 @@
-# IdeaKit Windows Installer PRD (Product Requirements Document)
+# IdeaKit Universal Installer PRD (Product Requirements Document)
 
 ## 📋 Overview
 
-The `install.bat` is a Windows batch file installer that automatically sets up the complete IdeaKit development environment for Windows users. It provides a one-click solution to create a structured project for creative idea development with AI assistance.
+The `install.py` is a cross-platform Python installer that automatically sets up the complete IdeaKit development environment for all operating systems. It provides a one-click solution to create a structured project for creative idea development with AI assistance through Cursor.
 
 ## 🎯 Purpose
 
-- **Primary Goal**: Enable Windows users to quickly set up IdeaKit without manual configuration
-- **Target Users**: Windows developers, solo entrepreneurs, creative individuals
-- **Value Proposition**: Zero-configuration setup for AI-powered idea development workflow
+- **Primary Goal**: Enable developers on any platform to quickly set up IdeaKit without manual configuration
+- **Target Users**: Developers, solo entrepreneurs, creative individuals (Windows, macOS, Linux)
+- **Value Proposition**: Zero-configuration cross-platform setup for AI-powered idea development workflow
 
 ## 🔧 Technical Specifications
 
 ### System Requirements
-- **OS**: Windows 10/11
-- **Shell**: Command Prompt or PowerShell
+- **OS**: Windows 10/11, macOS 10.14+, Linux (Ubuntu 18.04+, CentOS 7+)
+- **Python**: Python 3.6+ (built-in on most systems)
 - **Dependencies**: Git (for new project creation)
-- **Encoding**: UTF-8 support (chcp 65001)
+- **IDE**: Cursor (recommended) or VS Code with Cursor extension
 
 ### File Structure Created
 ```
@@ -54,6 +54,7 @@ project-root/
   - Initializes Git repository
   - Creates basic README.md
 - **Existing Project Mode**: Installs IdeaKit components in current directory
+- **Cross-Platform**: Works identically on Windows, macOS, and Linux
 
 ### 2. Constitution System
 - **Core Philosophy**: Fun-first, cross-domain innovation, solo execution power, originality pursuit
@@ -61,12 +62,14 @@ project-root/
 - **Tech Stack Preferences**: React, Next.js, Node.js, Python, Supabase, etc.
 - **Pitfall Avoidance**: Guidelines for avoiding common mistakes
 
-### 3. AI Command System
+### 3. Cursor AI Command System
 - **@spark**: Initial idea capture and assessment
 - **@expand**: Creative partner mode for idea expansion
 - **@reality-check**: Critical mentor mode for feasibility analysis
 - **@blueprint**: Blueprint architect mode for project planning
 - **@constitution**: Constitution review and updates
+- **Cursor Integration**: Commands work directly in Cursor chat interface
+- **Custom Instructions**: Pre-configured AI behavior for consistent responses
 
 ### 4. Template System
 - **Idea Seed Template**: Structured format for initial idea capture
@@ -83,24 +86,24 @@ project-root/
 ## 📝 Installation Process
 
 ### Step 1: Environment Setup
-```batch
-@echo off
-setlocal enabledelayedexpansion
-chcp 65001 >nul
+```python
+#!/usr/bin/env python3
+import os, sys, platform, subprocess, shutil
+from pathlib import Path
 ```
 
 ### Step 2: Project Detection
-- Check for `.git` directory
+- Check for `.git` directory using `os.path.exists('.git')`
 - Branch into new project or existing project mode
-- Handle user input for project naming
+- Handle user input for project naming with `input()`
 
 ### Step 3: Directory Structure Creation
-- Create all necessary folders with error suppression
-- Ensure proper Windows path handling
+- Create all necessary folders using `Path().mkdir(parents=True, exist_ok=True)`
+- Cross-platform path handling with `pathlib.Path`
 
 ### Step 4: Configuration Files
 - Generate constitution.md with core philosophy
-- Create Cursor AI instructions
+- Create Cursor AI instructions in `.cursor/instructions.md`
 - Set up prompt templates for each command
 
 ### Step 5: Template System
@@ -115,15 +118,16 @@ chcp 65001 >nul
 ## 🎨 User Experience
 
 ### Installation Flow
-1. **Download & Execute**: Single command execution
+1. **Download & Execute**: Single command execution across all platforms
 2. **Interactive Setup**: Project name input (optional)
-3. **Progress Feedback**: Clear status messages for each step
+3. **Progress Feedback**: Clear status messages with emojis for each step
 4. **Completion Guide**: Instructions for next steps
 
 ### Error Handling
-- **Silent Failures**: `2>nul` suppresses error messages for non-critical operations
+- **Exception Handling**: Python try-catch blocks for robust error handling
 - **Graceful Degradation**: Continues installation even if some steps fail
-- **User Feedback**: Clear success/failure indicators
+- **User Feedback**: Clear success/failure indicators with detailed messages
+- **Cross-Platform**: Handles OS-specific differences automatically
 
 ### Post-Installation
 - **Immediate Usability**: Ready to use with Cursor AI
@@ -133,9 +137,11 @@ chcp 65001 >nul
 ## 🔄 Workflow Integration
 
 ### Cursor AI Integration
-- **Custom Instructions**: Pre-configured AI behavior
-- **Command Recognition**: Slash commands work immediately
-- **Context Awareness**: AI understands project structure
+- **Custom Instructions**: Pre-configured AI behavior in `.cursor/instructions.md`
+- **Command Recognition**: @spark, @expand, @reality-check, @blueprint commands work immediately
+- **Context Awareness**: AI understands project structure and constitution
+- **Persona Switching**: Different AI personalities for different workflow stages
+- **File Management**: Automatic file creation and organization
 
 ### Development Workflow
 1. **@spark**: Capture new ideas
@@ -158,46 +164,49 @@ chcp 65001 >nul
 
 ## 🛠️ Technical Implementation
 
-### Batch File Features
-- **Delayed Expansion**: `!variable!` syntax for dynamic variables
-- **UTF-8 Support**: Proper encoding for international characters
-- **Error Suppression**: `2>nul` for non-critical operations
-- **User Input**: `set /p` for interactive project naming
+### Python Features
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+- **UTF-8 Support**: Built-in Unicode support for international characters
+- **Exception Handling**: Robust error handling with try-catch blocks
+- **User Input**: `input()` function for interactive project naming
 
 ### File Generation
-- **Heredoc Syntax**: `(echo ...) > file` for multi-line file creation
-- **Escape Characters**: `^` for special character handling
-- **Path Handling**: Windows-specific path separators
+- **File I/O**: `open()` and `write()` for multi-line file creation
+- **Path Handling**: `pathlib.Path` for cross-platform path management
+- **Directory Creation**: `Path().mkdir(parents=True, exist_ok=True)`
 
 ### Cross-Platform Considerations
-- **Windows-Specific**: Designed for Windows Command Prompt/PowerShell
-- **Git Integration**: Works with Windows Git installations
-- **Path Compatibility**: Uses Windows path separators
+- **Universal Compatibility**: Single codebase for all operating systems
+- **Git Integration**: Works with Git installations on any platform
+- **Path Compatibility**: Automatic path separator handling
+- **Shell Detection**: Detects and adapts to different shell environments
 
 ## 🔮 Future Enhancements
 
 ### Potential Improvements
-- **PowerShell Version**: Native PowerShell script alternative
-- **GUI Installer**: Windows Installer package option
+- **GUI Installer**: Cross-platform GUI installer using tkinter or PyQt
 - **Configuration Options**: Customizable installation parameters
 - **Update Mechanism**: Built-in updater for IdeaKit components
+- **Dependency Management**: Automatic Python package installation
 
 ### Integration Opportunities
 - **VS Code Extension**: Direct integration with VS Code
-- **Windows Store**: Distribution through Microsoft Store
-- **Chocolatey Package**: Package manager distribution
+- **Package Managers**: pip, npm, or system package manager distribution
+- **Docker Support**: Containerized installation option
+- **Cloud Integration**: Direct deployment to cloud platforms
 
 ## 📚 Documentation
 
 ### User Documentation
-- **README.md**: Quick start guide with Windows instructions
-- **INSTALL.md**: Detailed installation guide
-- **Example Files**: Built-in usage examples
+- **README.md**: Quick start guide with cross-platform instructions
+- **INSTALL.md**: Detailed installation guide for all platforms
+- **Example Files**: Built-in usage examples and templates
 
 ### Developer Documentation
 - **PRD**: This document for technical specifications
-- **Code Comments**: Inline documentation in batch file
+- **Code Comments**: Inline documentation in Python script
 - **Template Documentation**: Built into template files
+- **API Documentation**: Python function documentation
 
 ## 🎯 Success Criteria
 
@@ -210,11 +219,12 @@ chcp 65001 >nul
 
 ### Non-Functional Requirements
 - ✅ Fast installation (< 30 seconds)
-- ✅ Clear user feedback
-- ✅ Graceful error handling
-- ✅ Cross-shell compatibility
-- ✅ UTF-8 character support
+- ✅ Clear user feedback with emojis and status messages
+- ✅ Graceful error handling with Python exceptions
+- ✅ Cross-platform compatibility (Windows, macOS, Linux)
+- ✅ UTF-8 character support for international users
+- ✅ Cursor AI integration ready out of the box
 
 ---
 
-**This PRD serves as the technical specification for the IdeaKit Windows installer, ensuring consistent implementation and user experience across all Windows environments.**
+**This PRD serves as the technical specification for the IdeaKit Universal installer, ensuring consistent implementation and user experience across all operating systems and development environments.**
