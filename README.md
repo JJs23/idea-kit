@@ -18,15 +18,25 @@ IdeaKit is inspired by GitHub's [Spec Kit](https://github.com/github/spec-kit) a
 ## 🚀 Quick Start
 
 ### One-Click Installation
+
+**Linux/macOS:**
 ```bash
 curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.sh | bash
+```
+
+**Windows:**
+```cmd
+curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.bat | cmd
 ```
 
 ### Manual Installation
 ```bash
 git clone https://github.com/JJs23/idea-kit.git
 cd idea-kit
+# Linux/macOS
 ./install.sh
+# Windows
+install.bat
 ```
 
 After installation, open the project in Cursor and start immediately:
