@@ -16,6 +16,8 @@ IdeaKit is inspired by GitHub's [Spec Kit](https://github.com/github/spec-kit) a
 - 🦄 **Solo Development Optimized**: Evaluation focused on MVP implementation within 6 months by one person
 - ⚙️ **Custom Commands**: Pre-configured Cursor commands for seamless workflow
 - 🌍 **Cross-Platform**: Works on Windows, macOS, and Linux with Python
+- 🚀 **One-Click Setup**: Automated installation with customizable options
+- 📊 **Progress Tracking**: Built-in project status and idea management
 
 ## 🚀 Quick Start
 
@@ -104,7 +106,7 @@ After installation, open the project in Cursor and start immediately:
 my-ideas/
 ├── .cursor/
 │   ├── instructions.md          # Cursor AI configuration
-│   └── commands.json            # Custom Cursor commands
+│   └── commands/                # Custom Cursor commands (ik-*.md files)
 ├── .ideakit/
 │   ├── constitution.md          # Personal philosophy and evaluation criteria
 │   ├── prompts/                 # Command-specific prompts
@@ -184,10 +186,12 @@ Edit `.ideakit/constitution.md` to reflect personal values:
 - Fields to avoid
 
 ### Adding New Commands
-Define new `@command` in `.cursor/instructions.md`:
-```markdown
-### @validate
-Generate simple surveys or interview questions for market validation
+Create new command files in `.cursor/commands/` folder:
+```bash
+# Create new command file
+echo "# Your new command description
+
+Your detailed prompt here..." > .cursor/commands/ik-your-command.md
 ```
 
 ## 📊 Idea Management
@@ -215,13 +219,28 @@ grep -r "Fun Factor.*[8-9]/10" ideas/
 
 ## 🤝 Contributing
 
-Feel free to contribute ideas or improvements anytime!
+We welcome contributions! Whether it's bug fixes, new features, or documentation improvements.
 
 1. Fork this repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+### Development Setup
+```bash
+git clone https://github.com/JJs23/idea-kit.git
+cd idea-kit
+python3 install.py -n test-development
+```
+
+## 🎯 Roadmap
+
+- [ ] Web-based dashboard for idea visualization
+- [ ] Integration with popular project management tools
+- [ ] AI-powered market research automation
+- [ ] Community idea sharing platform
+- [ ] Mobile app for idea capture on-the-go
 
 ## 📄 License
 

@@ -131,7 +131,7 @@ Switch to Blueprint Architect mode. Create comprehensive project proposal with t
 
 1. **Open Project**: `cursor .`
 2. **Check Custom Instructions**: Cursor automatically reads `.cursor/instructions.md` file
-3. **Check Custom Commands**: Cursor automatically loads `.cursor/commands.json` file
+3. **Check Custom Commands**: Cursor automatically loads `.cursor/commands/` folder with individual `.md` files
 4. **Test**: Try typing `@spark my first idea` or use the custom commands from the command palette
 
 ## Usage
@@ -152,7 +152,7 @@ Switch to Blueprint Architect mode. Create comprehensive project proposal with t
 project/
 ├── .cursor/
 │   ├── instructions.md              # Cursor AI configuration
-│   └── commands.json                # Custom Cursor commands
+│   └── commands/                    # Custom Cursor commands (ik-*.md files)
 ├── .ideakit/
 │   ├── constitution.md              # Personal philosophy and criteria
 │   ├── prompts/                     # Command-specific prompts
@@ -174,14 +174,12 @@ Edit `.ideakit/constitution.md` to:
 - Adjust evaluation criteria weights
 
 ### Adding New Commands
-Add new commands to `.cursor/commands.json` following the existing format:
-```json
-{
-  "name": "my-command",
-  "description": "Description of what this command does",
-  "prompt": "Detailed prompt for the AI",
-  "context": "file"
-}
+Create new command files in `.cursor/commands/` folder:
+```bash
+# Create new command file
+echo "# Your new command description
+
+Your detailed prompt here..." > .cursor/commands/ik-your-command.md
 ```
 
 ### Template Modification
@@ -190,10 +188,11 @@ Modify templates in `.ideakit/templates/` folder to desired format
 ## Troubleshooting
 
 ### When Cursor doesn't recognize commands
-1. Check if `.cursor/instructions.md` and `.cursor/commands.json` files exist
-2. Restart Cursor
-3. Make sure you're running from project root
-4. Check if custom commands appear in Cursor's command palette
+1. Check if `.cursor/instructions.md` and `.cursor/commands/` folder exist
+2. Verify individual command files (ik-*.md) are in the commands folder
+3. Restart Cursor
+4. Make sure you're running from project root
+5. Check if custom commands appear in Cursor's command palette
 
 ### When files aren't created
 1. Check folder permissions
