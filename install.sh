@@ -30,36 +30,36 @@ mkdir -p .cursor
 # Create constitution file
 echo "📜 Creating constitution.md..."
 cat > .ideakit/constitution.md << 'EOF'
-# 1인 유니콘 크리에이터의 아이디어 헌법
+# 1-Person Unicorn Creator's Idea Constitution
 
-## 핵심 철학
-- **재미가 최우선**: 만드는 과정도, 사용하는 과정도 즐거워야 함
-- **크로스 도메인 혁신**: 전혀 다른 분야를 연결해서 새로운 가치 창출
-- **1인 실행력**: 혼자서도 MVP까지는 반드시 구현 가능해야 함
-- **독창성 추구**: "이미 있어"보다는 "어떻게 다르게 만들까?"
+## Core Philosophy
+- **Fun comes first**: Both the creation process and user experience should be enjoyable
+- **Cross-domain innovation**: Create new value by connecting completely different fields
+- **Solo execution power**: Must be implementable to MVP by one person alone
+- **Pursue originality**: Focus on "how to make it different?" rather than "it already exists"
 
-## 평가 기준 (우선순위)
-1. **재미 지수** (10점): 사용자와 개발자 모두의 즐거움
-2. **차별화** (9점): 기존 것과 명확히 구분되는 포인트
-3. **실현성** (8점): 1인 개발자 기준 6개월 내 MVP 가능
-4. **수익화** (7점): 명확한 비즈니스 모델 존재
-5. **확장성** (6점): 향후 기능/시장 확장 가능성
+## Evaluation Criteria (Priority)
+1. **Fun Factor** (10 points): Joy for both users and developers
+2. **Differentiation** (9 points): Clear distinction from existing solutions
+3. **Feasibility** (8 points): MVP possible within 6 months for solo developer
+4. **Monetization** (7 points): Clear business model exists
+5. **Scalability** (6 points): Future feature/market expansion potential
 
-## 회피할 함정들
-- 너무 복잡한 기술 스택
-- 명확하지 않은 타겟 유저
-- 재미없는 유틸리티성 도구
-- 기존 대기업 서비스와 정면승부
+## Pitfalls to Avoid
+- Overly complex tech stack
+- Unclear target users
+- Boring utility tools
+- Direct competition with existing big tech services
 
-## 선호하는 기술 스택
+## Preferred Tech Stack
 - Frontend: React, Next.js, Flutter
 - Backend: Node.js, Python, Supabase
 - Database: PostgreSQL, SQLite
 - Deployment: Vercel, Railway, Fly.io
-- 기타: 빠른 프로토타이핑을 위한 No-code/Low-code 도구 활용
+- Others: Utilize No-code/Low-code tools for rapid prototyping
 
 ---
-*수정이 필요하면 이 파일을 편집하세요*
+*Edit this file if modifications are needed*
 EOF
 
 # Create Cursor instructions
@@ -291,11 +291,11 @@ cat > .ideakit/templates/idea-seed.md << 'EOF'
 [What does success look like?]
 
 ## Constitution Assessment
-- **재미 지수:** [1-10] - [reason]
-- **차별화:** [1-10] - [reason]
-- **실현성:** [1-10] - [reason]
-- **수익화:** [1-10] - [reason]
-- **확장성:** [1-10] - [reason]
+- **Fun Factor:** [1-10] - [reason]
+- **Differentiation:** [1-10] - [reason]  
+- **Feasibility:** [1-10] - [reason]
+- **Monetization:** [1-10] - [reason]
+- **Scalability:** [1-10] - [reason]
 
 ## Questions to Explore
 - [ ] [Question 1]
@@ -389,27 +389,27 @@ cat > ideas/example-idea.md << 'EOF'
 **Constitution Score:** 35/50
 
 ## Raw Idea
-AR 앱에서 반려동물과 함께 운동하는 게임. 실제 운동을 하면 가상 펫이 같이 운동하고 성장함.
+AR app game to exercise with pets. When you actually exercise, virtual pets exercise together and grow.
 
 ## Core Problem/Opportunity
-- 운동 동기부여 부족 문제
-- 반려동물과의 상호작용 욕구
-- 재미있는 피트니스 경험 제공
+- Lack of exercise motivation
+- Desire for interaction with pets
+- Providing fun fitness experience
 
 ## Initial Vision
-사용자가 조깅하면 AR 강아지가 옆에서 같이 뛰고, 운동량에 따라 펫이 레벨업하고 새로운 스킬을 배움
+When user jogs, AR dog runs alongside, and pets level up and learn new skills based on exercise amount
 
 ## Constitution Assessment
-- **재미 지수:** 9/10 - AR 펫과의 상호작용이 매우 재미있을 것
-- **차별화:** 8/10 - AR + 펫 + 피트니스 조합은 독특함
-- **실현성:** 6/10 - AR 개발이 복잡할 수 있음
-- **수익화:** 7/10 - 펫 용품, 프리미엄 펫 등 여러 모델 가능
-- **확장성:** 5/10 - AR 기술 의존도가 높음
+- **Fun Factor:** 9/10 - AR pet interaction would be very fun
+- **Differentiation:** 8/10 - AR + pet + fitness combination is unique
+- **Feasibility:** 6/10 - AR development could be complex
+- **Monetization:** 7/10 - Multiple models possible like pet accessories, premium pets
+- **Scalability:** 5/10 - High dependency on AR technology
 
 ## Questions to Explore
-- [ ] AR 없이도 재미있게 만들 수 있을까?
-- [ ] 실제 반려동물과의 연동은 어떨까?
-- [ ] 운동 종류별로 다른 펫이 있으면?
+- [ ] Can it be fun without AR?
+- [ ] How about integration with real pets?
+- [ ] What if different pets for different exercise types?
 
 ## Next Steps
 - [ ] Run @expand to explore creative directions
@@ -458,7 +458,7 @@ cat > package.json << 'EOF'
     "stats": "find ideas/ -name '*.md' | wc -l && echo 'ideas captured'"
   },
   "keywords": ["ideakit", "creativity", "1-person-unicorn"],
-  "author": "1인 유니콘 크리에이터",
+  "author": "1-Person Unicorn Creator",
   "license": "MIT"
 }
 EOF
@@ -480,7 +480,7 @@ echo "   2. Try: @spark [your idea]"
 echo "   3. Follow with: @expand, @reality-check, @blueprint"
 echo ""
 echo "💡 Example commands:"
-echo "   @spark 반려동물과 함께하는 AR 운동 게임"
+echo "   @spark AR fitness game with pets"
 echo "   @expand"
 echo "   @reality-check"
 echo "   @blueprint"
