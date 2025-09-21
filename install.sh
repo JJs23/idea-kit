@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # IdeaKit Installer for Cursor
-# Run with: curl -sSL https://raw.githubusercontent.com/your-repo/ideakit/main/install.sh | bash
+# Run with: curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.sh | bash
 
 set -e
 

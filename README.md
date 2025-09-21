@@ -1,199 +1,211 @@
-# IdeaKit 설치 가이드 🚀
+# 🚀 IdeaKit
 
-## 방법 1: 스크립트 자동 설치 (추천)
+> Spec-Driven Development for Creative Ideas - 1인 유니콘을 꿈꾸는 크리에이터를 위한 아이디어 개발 도구
 
-### 새 프로젝트로 설치
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/JJs23/idea-kit?style=social)](https://github.com/JJs23/idea-kit/stargazers)
+
+IdeaKit은 GitHub의 [Spec Kit](https://github.com/github/spec-kit)에서 영감을 받아, **아이디어 개발과 기획에 특화된 도구**입니다. 새로운 아이디어를 체계적으로 확장하고, 냉철하게 검토하며, 구조화된 기획서로 발전시킬 수 있습니다.
+
+## ✨ 특징
+
+- 🎯 **Cursor AI 통합**: 맞춤형 슬래시 명령어로 자연스러운 아이디어 개발
+- 🎭 **페르소나 스위칭**: 창의적 파트너 ↔ 현실적 멘토 모드 전환
+- 🏗️ **구조화된 워크플로우**: Spark → Expand → Reality-check → Blueprint
+- 📁 **체계적 관리**: 아이디어 상태별 자동 파일 정리
+- 🦄 **1인 개발 최적화**: 혼자서도 6개월 내 MVP 구현 가능성 중심 평가
+
+## 🚀 빠른 시작
+
+### 원클릭 설치
 ```bash
-# 1. 새 폴더 생성 및 이동
-mkdir my-ideas && cd my-ideas
-
-# 2. 스크립트 다운로드 및 실행
-curl -sSL https://raw.githubusercontent.com/yourusername/ideakit/main/install.sh | bash
-
-# 3. Cursor에서 열기
-cursor .
+curl -sSL https://raw.githubusercontent.com/JJs23/idea-kit/main/install.sh | bash
 ```
 
-### 기존 프로젝트에 설치
+### 수동 설치
 ```bash
-# 기존 프로젝트 폴더에서
-curl -sSL https://raw.githubusercontent.com/yourusername/ideakit/main/install.sh | bash
-cursor .
+git clone https://github.com/JJs23/idea-kit.git
+cd idea-kit
+./install.sh
 ```
 
-## 방법 2: 수동 설치
-
-### 1. 프로젝트 구조 생성
-```bash
-mkdir -p .ideakit/{prompts,templates,personas}
-mkdir -p .cursor
-mkdir -p ideas/{active,archive,implemented}
-mkdir -p prototypes research
-```
-
-### 2. 핵심 파일 생성
-
-#### `.cursor/instructions.md` 생성
-```markdown
-# IdeaKit Assistant Instructions
-
-You are an AI assistant specialized in helping a solo entrepreneur develop creative ideas for fun services and games. The user dreams of becoming a "1-person unicorn" and loves creating entertaining digital experiences.
-
-Always read the constitution at `.ideakit/constitution.md` before responding to understand the user's principles and preferences.
-
-## Available Commands
-
-### @spark [idea]
-Capture and initially assess a new idea. Create idea-seed.md file in ideas/ folder.
-
-### @expand
-Switch to Creative Partner mode. Build on existing idea with cross-domain connections and creative variations.
-
-### @reality-check  
-Switch to Critical Mentor mode. Analyze idea against constitution criteria.
-
-### @blueprint
-Switch to Blueprint Architect mode. Create comprehensive project proposal with technical specs.
-
-## Your Roles & Personas
-
-### Creative Partner Mode (@expand)
-- Extremely enthusiastic about new ideas
-- Masters at connecting different domains creatively  
-- Always asks "What if we combine this with...?"
-- Focuses on maximizing fun and uniqueness
-
-### Critical Mentor Mode (@reality-check)  
-- Experienced, realistic perspective
-- Focuses on implementation challenges for 1-person development
-- Evaluates against constitution's 5 criteria
-- Provides constructive criticism
-
-### Blueprint Architect Mode (@blueprint)
-- Systematic and structured approach
-- Uses preferred tech stack from constitution
-- Creates realistic 6-month roadmaps for solo developer
-
-## File Management
-- Always create files in appropriate folders
-- Use clear naming with timestamps
-- Reference related files with links
-- Keep constitution as source of truth
-```
-
-#### `.ideakit/constitution.md` 생성
-```markdown
-# 1인 유니콘 크리에이터의 아이디어 헌법
-
-## 핵심 철학
-- **재미가 최우선**: 만드는 과정도, 사용하는 과정도 즐거워야 함
-- **크로스 도메인 혁신**: 전혀 다른 분야를 연결해서 새로운 가치 창출
-- **1인 실행력**: 혼자서도 MVP까지는 반드시 구현 가능해야 함
-- **독창성 추구**: "이미 있어"보다는 "어떻게 다르게 만들까?"
-
-## 평가 기준 (우선순위)
-1. **재미 지수** (10점): 사용자와 개발자 모두의 즐거움
-2. **차별화** (9점): 기존 것과 명확히 구분되는 포인트
-3. **실현성** (8점): 1인 개발자 기준 6개월 내 MVP 가능
-4. **수익화** (7점): 명확한 비즈니스 모델 존재
-5. **확장성** (6점): 향후 기능/시장 확장 가능성
-
-## 회피할 함정들
-- 너무 복잡한 기술 스택
-- 명확하지 않은 타겟 유저
-- 재미없는 유틸리티성 도구
-- 기존 대기업 서비스와 정면승부
-
-## 선호하는 기술 스택
-- Frontend: React, Next.js, Flutter
-- Backend: Node.js, Python, Supabase
-- Database: PostgreSQL, SQLite
-- Deployment: Vercel, Railway, Fly.io
-```
-
-### 3. Cursor에서 설정
-
-1. **프로젝트 열기**: `cursor .`
-2. **Custom Instructions 확인**: Cursor가 `.cursor/instructions.md` 파일을 자동으로 읽음
-3. **테스트**: `@spark 내 첫 번째 아이디어` 입력해보기
-
-## 사용법
-
-### 기본 워크플로우
+설치 후 Cursor에서 프로젝트를 열고 바로 시작하세요:
 ```
 @spark 반려동물과 함께하는 AR 운동 게임 아이디어
-↓
-@expand (창의적 확장)
-↓  
-@reality-check (현실적 검토)
-↓
-@blueprint (구조화된 기획서)
 ```
 
-### 파일 구조 예시
+## 🔄 워크플로우
+
+### 1. 🌱 아이디어 포착 (`@spark`)
 ```
-프로젝트/
-├── .cursor/instructions.md          # Cursor AI 설정
+@spark 음성으로 조작하는 요리 게임 앱
+```
+- 아이디어를 즉시 캡처하고 초기 평가
+- `ideas/` 폴더에 `idea-seed.md` 파일 생성
+- Constitution 기준으로 1차 점수 매기기
+
+### 2. 🎨 창의적 확장 (`@expand`)
+**페르소나: 열정적인 창의 파트너**
+```
+@expand
+```
+- 다양한 도메인과 크로스오버 아이디어 제시
+- "음성 + 요리 + 게임 + 소셜 + AR" 등 조합 탐색
+- 재미 요소 극대화 방향 제안
+
+### 3. 🔍 현실 체크 (`@reality-check`)
+**페르소나: 경험 많은 현실적 멘토**
+```
+@reality-check
+```
+- 1인 개발 기준 실현 가능성 분석
+- 기술적 난이도, 시장성, 수익화 모델 검토
+- 리스크와 대안 제시
+
+### 4. 📋 기획서 작성 (`@blueprint`)
+**페르소나: 체계적인 설계 전문가**
+```
+@blueprint
+```
+- 실행 가능한 프로젝트 제안서 생성
+- 기술 스택, 로드맵, 비즈니스 모델 포함
+- 6개월 MVP 계획 수립
+
+## 📁 프로젝트 구조
+
+```
+my-ideas/
+├── .cursor/
+│   └── instructions.md          # Cursor AI 설정
 ├── .ideakit/
-│   ├── constitution.md              # 개인 철학과 기준
-│   └── templates/                   # 파일 템플릿들
+│   ├── constitution.md          # 개인 철학과 평가 기준
+│   ├── prompts/                 # 명령어별 프롬프트
+│   └── templates/               # 파일 템플릿
 ├── ideas/
-│   ├── active/                      # 진행 중인 아이디어
-│   ├── archive/                     # 완료/보류 아이디어
-│   └── implemented/                 # 실제 구현한 것들
-├── prototypes/                      # 코드 실험
-└── research/                        # 시장 조사 등
+│   ├── active/                  # 진행 중인 아이디어
+│   ├── archive/                 # 보류/완료된 아이디어
+│   └── implemented/             # 실제 구현한 프로젝트
+├── prototypes/                  # 코드 실험
+└── research/                    # 시장 조사 자료
 ```
 
-## 커스터마이징
+## 🎯 Constitution (아이디어 헌법)
+
+IdeaKit의 핵심은 **개인화된 Constitution**입니다:
+
+```markdown
+## 핵심 철학
+- 재미가 최우선: 만드는 과정도, 사용하는 과정도 즐거워야 함
+- 크로스 도메인 혁신: 전혀 다른 분야를 연결해서 새로운 가치 창출
+- 1인 실행력: 혼자서도 MVP까지는 반드시 구현 가능해야 함
+- 독창성 추구: "이미 있어"보다는 "어떻게 다르게 만들까?"
+
+## 평가 기준 (우선순위)
+1. 재미 지수 (10점): 사용자와 개발자 모두의 즐거움
+2. 차별화 (9점): 기존 것과 명확히 구분되는 포인트
+3. 실현성 (8점): 1인 개발자 기준 6개월 내 MVP 가능
+4. 수익화 (7점): 명확한 비즈니스 모델 존재
+5. 확장성 (6점): 향후 기능/시장 확장 가능성
+```
+
+이 Constitution은 모든 AI 상호작용의 기준이 되며, 개인 취향에 맞게 수정 가능합니다.
+
+## 💡 사용 예시
+
+### 실제 아이디어 개발 과정
+
+```
+사용자: @spark 음성으로 레시피를 알려주는 AR 요리 도우미
+
+AI (Spark): 🌟 흥미로운 아이디어네요!
+초기 평가: 재미 지수 8/10, 차별화 7/10, 실현성 6/10
+질문: 주요 타겟은 요리 초보자인가요? AR 없이도 작동해야 할까요?
+
+사용자: @expand
+
+AI (Creative Partner): 와! 이거 완전 재미있겠는데요! 
+🎨 몇 가지 크로스오버 아이디어:
+1. 음성 + 요리 + 게임 = "요리 배틀 음성 RPG"
+2. AR + 요리 + 소셜 = "친구와 함께하는 가상 요리 클래스"
+3. 음성 + 요리 + AI = "AI 요리사가 실시간 코칭"
+
+사용자: @reality-check
+
+AI (Critical Mentor): 솔직히 말하면 몇 가지 현실적 문제가 있어요:
+⚠️ AR 개발 복잡도가 1인 개발에는 과도할 수 있음
+⚠️ 음성 인식의 요리 환경 노이즈 문제  
+⚠️ 기존 요리 앱 대비 명확한 차별점 필요
+💡 대안: AR 대신 화면 기반 UI로 시작하는 게 어떨까요?
+
+사용자: @blueprint
+
+AI (Blueprint Architect): 검증된 아이디어를 바탕으로 실행 계획을 만들어드릴게요:
+📋 프로젝트명: VoiceChef - 음성 요리 도우미
+🎯 MVP (3개월): 음성 명령으로 레시피 단계별 안내
+⚙️ 기술스택: React Native + 음성인식 API + Firebase
+💰 수익모델: 프리미엄 레시피 구독 ($4.99/월)
+📈 로드맵: MVP → 음성학습 → AR 기능 → 소셜 기능
+```
+
+## 🛠️ 커스터마이징
 
 ### Constitution 수정
-`.ideakit/constitution.md`를 편집해서:
-- 개인 가치관 반영
-- 선호 기술 스택 변경
-- 평가 기준 가중치 조정
+`.ideakit/constitution.md`를 편집해서 개인 가치관을 반영하세요:
+- 선호하는 기술 스택
+- 평가 기준 가중치
+- 회피하고 싶은 분야
 
 ### 새 명령어 추가
-`.cursor/instructions.md`에 새로운 `@command` 정의 가능
+`.cursor/instructions.md`에서 새로운 `@command` 정의 가능:
+```markdown
+### @validate
+시장 검증을 위한 간단한 설문이나 인터뷰 질문 생성
+```
 
-### 템플릿 수정
-`.ideakit/templates/` 폴더의 템플릿들을 원하는 형태로 수정
+## 📊 아이디어 관리
 
-## 트러블슈팅
-
-### Cursor가 명령어를 인식 못할 때
-1. `.cursor/instructions.md` 파일이 있는지 확인
-2. Cursor 재시작
-3. 프로젝트 루트에서 실행하는지 확인
-
-### 파일이 생성되지 않을 때
-1. 폴더 권한 확인
-2. `ideas/` 폴더가 존재하는지 확인
-3. 명령어를 정확히 입력했는지 확인
-
-## 고급 사용법
-
-### 아이디어 상태 관리
+### 상태별 분류
 ```bash
-# 진행 중인 아이디어 목록
+# 진행 중인 아이디어 보기
 ls ideas/active/
 
-# 완료된 아이디어 아카이브로 이동  
+# 완료된 아이디어 아카이브
 mv ideas/active/great-idea.md ideas/implemented/
 
-# 통계 보기
+# 아이디어 통계
 find ideas/ -name "*.md" | wc -l
 ```
 
-### 빠른 검색
+### 검색과 분석
 ```bash
-# 특정 키워드로 아이디어 검색
+# 키워드 검색
 grep -r "게임" ideas/
 
-# 최근 아이디어들
-ls -t ideas/active/ | head -5
+# 높은 점수 아이디어 찾기
+grep -r "재미 지수.*[8-9]/10" ideas/
 ```
+
+## 🤝 기여하기
+
+아이디어나 개선사항이 있으시면 언제든 기여해주세요!
+
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 라이선스
+
+이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+
+## 🙏 영감
+
+- [GitHub Spec Kit](https://github.com/github/spec-kit) - Spec-Driven Development의 원조
+- 모든 1인 개발자들의 창의적 여정
 
 ---
 
-**설치 완료 후 `@spark` 명령어로 첫 아이디어를 시작해보세요! 🦄**
+**"아이디어는 많지만 정리가 안 된다"는 모든 크리에이터들을 위해 만들어졌습니다. 함께 1인 유니콘의 꿈을 실현해봐요! 🦄**
+
+⭐ 유용하다면 Star를 눌러주세요!
